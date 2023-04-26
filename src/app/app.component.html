@@ -1,0 +1,68 @@
+<mat-sidenav-container style="height: 100%;">
+  <mat-sidenav color="primary" #sidenav class="appSideNavClass">
+    <mat-nav-list>
+      <ng-container *ngTemplateOutlet="menuOptions;context:{sideNav: true}"></ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="appNavbarClass" *ngIf="showMenu">
+      <mat-toolbar-row>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+         <button mat-icon-button>
+          <!-- <img  height="40" src="assets/logo.jpg" (click)="goToMainPage()"> -->
+        </button>
+        
+        <span class="menu-spacer"></span>
+        <button class="alignRightElement" mat-icon-button (click)="logout()" *ngIf="showLogout">
+          <mat-icon matTooltip="Log Out">logout</mat-icon>
+        </button>
+
+        <div class="alignRightElement">
+                <ng-container *ngTemplateOutlet="menuOptions;context:{sideNav: false}"></ng-container>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div>
+      <ngx-spinner bdColor="rgba(0,0,0,0.8)" size="medium" color="#fff" type="ball-spin-clockwise" fullScreen="true">
+        <span style="color: white">Loading..</span>
+      </ngx-spinner>
+      <router-outlet></router-outlet>
+      <br>
+    </div>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+
+<ng-template #menuOptions let-sideNav="sideNav">
+  <span *ngIf="sideNav"><a mat-button >
+      <!-- <img height="40" src="assets/logo.jpg"> -->
+  </a><br></span>
+  <ng-container *ngFor="let menuTab of menuNames">
+    <span *ngIf="!menuTab.children">
+      <a [routerLink]="menuTab.link" mat-button>
+        <mat-icon inline="true" *ngIf="menuTab.matIconName">{{menuTab.matIconName}}
+        </mat-icon>{{menuTab.name}}
+      </a>
+      <span *ngIf="sideNav"><br></span>
+    </span>
+    <span *ngIf="menuTab.children">
+      <a [matMenuTriggerFor]="menu" mat-button>
+        <mat-icon inline="true" *ngIf="menuTab.matIconName">{{menuTab.matIconName}}
+        </mat-icon>
+        {{menuTab.name}}
+      </a>
+      <mat-menu #menu="matMenu">
+        <span *ngFor="let sub of menuTab.children"><a [routerLink]="sub.link" mat-button>
+            {{sub.name}}
+          </a></span>
+      </mat-menu>
+      <span *ngIf="sideNav"><br></span>
+    </span>
+  </ng-container>
+</ng-template>

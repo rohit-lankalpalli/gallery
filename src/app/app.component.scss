@@ -1,0 +1,24 @@
+
+.appSideNavClass{
+  background:linear-gradient(var(--color-primary-dark),   var(--color-primary-light));
+  width: 30%;
+  text-decoration: none;
+}
+
+.appNavbarClass{
+    background:linear-gradient(var(--color-primary),   var(--color-primary-dark));
+}
+
+.alignRightElement {
+  text-align:right;
+  flex: 1;
+}
+
+a {
+    color:var(--font-color) !important;
+    text-decoration: none;
+}
+
+mat-icon {
+    width: 100%;
+}

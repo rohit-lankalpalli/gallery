@@ -1,0 +1,26 @@
+<div class="view-post-containter">
+<div style="margin-left:2%">
+  <a mat-icon-button [routerLink]="'/'">
+    <mat-icon>navigate_before</mat-icon>
+  </a>
+</div>
+    <mat-card class="card">
+        <mat-card-header *ngIf="showPost">
+          <div mat-card-avatar class="header-image"></div>
+          <mat-card-title style="font-weight: bold;font-size: small;">Rohit Lankalpalli</mat-card-title>
+          <mat-card-subtitle style="font-size: small;">{{imageDetails.location}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image (load)="util.spinner.hide();showPost=true;" [src]="util.API_ENDPOINT+imageDetails.src" [alt]="imageDetails.alt">
+        <mat-card-content *ngIf="showPost">
+          <p align="center" [innerHTML]="showCaption()">
+           
+          </p>
+          <textarea *ngIf="showTextArea" rows="4" cols="120" (change)="previewChanges($event.target.value)" align="center" [innerHTML]="showJSON()">
+           
+          </textarea>
+        </mat-card-content>
+        <mat-card-actions align="end" *ngIf="showPost">
+            <button color="primary" mat-button (click)="downloadImage()">❤️ Save</button>
+        </mat-card-actions>
+      </mat-card>
+</div>

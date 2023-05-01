@@ -1,0 +1,39 @@
+.container {
+margin-top: 2%;
+display: grid;
+padding-left: 2vw;
+grid-template-columns: 18vw 18vw 18vw 18vw 18vw;
+grid-gap: 1vw;
+}
+
+.mainDash {
+    overflow-y: auto;
+    height: 87vh;   
+}
+
+@media only screen and (max-width: 768px) {
+    .mainDash {
+        overflow-y: auto;
+        height: 90vh;   
+    }
+    .container {
+        margin-top: 2%;
+        display: grid;
+        padding-left: 2vw;
+        grid-template-columns: 30vw 30vw 30vw;
+        grid-gap: 2vw;
+    }
+    .hidden-mobile {
+        display: none;
+      }
+}
+
+.additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
+}
+
+.filterPlace {
+    margin-right: 2%;
+    margin-top: 2%;
+}

@@ -1,6 +1,6 @@
 
 .appSideNavClass{
-  background:linear-gradient(var(--color-primary-dark),   var(--color-primary-light));
+  background:linear-gradient(var(--color-primary-light),   var(--color-primary-dark));
   width: 30%;
   text-decoration: none;
 }
@@ -21,4 +21,17 @@ a {
 
 mat-icon {
     width: 100%;
+}
+
+.hidden-desktop {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .hidden-mobile {
+      display: none;
+    }
+  .hidden-desktop {
+      display: inherit;
+  }
 }

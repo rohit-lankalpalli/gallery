@@ -12,9 +12,9 @@ export class AppComponent {
   showMenu = true;
 
   menuNames = [
-    { link: '', name: 'Home', matIconName: 'home' },
-    { link: '', name: 'Search', matIconName: 'search' },
-    { link: '', name: 'Sign In', matIconName: 'account_circle' }
+    { link: '/', name: 'Home', matIconName: 'home' },
+    { link: '/', name: 'Search', matIconName: 'search' },
+    { link: '/', name: 'Sign In', matIconName: 'account_circle' }
   ];
   constructor(private util: CommonUtilService) {
 

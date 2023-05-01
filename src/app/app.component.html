@@ -8,19 +8,16 @@
   <mat-sidenav-content>
     <mat-toolbar class="appNavbarClass" *ngIf="showMenu">
       <mat-toolbar-row>
-        <button mat-icon-button (click)="sidenav.toggle()">
+        <button mat-icon-button class="hidden-desktop" (click)="sidenav.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
-         <button mat-icon-button>
-          <!-- <img  height="40" src="assets/logo.jpg" (click)="goToMainPage()"> -->
-        </button>
+        <a [routerLink]="'/'" mat-button>
+          Gallery
+        </a>
         
         <span class="menu-spacer"></span>
-        <button class="alignRightElement" mat-icon-button (click)="logout()" *ngIf="showLogout">
-          <mat-icon matTooltip="Log Out">logout</mat-icon>
-        </button>
 
-        <div class="alignRightElement">
+        <div class="alignRightElement hidden-mobile">
                 <ng-container *ngTemplateOutlet="menuOptions;context:{sideNav: false}"></ng-container>
         </div>
       </mat-toolbar-row>
@@ -49,19 +46,6 @@
         <mat-icon inline="true" *ngIf="menuTab.matIconName">{{menuTab.matIconName}}
         </mat-icon>{{menuTab.name}}
       </a>
-      <span *ngIf="sideNav"><br></span>
-    </span>
-    <span *ngIf="menuTab.children">
-      <a [matMenuTriggerFor]="menu" mat-button>
-        <mat-icon inline="true" *ngIf="menuTab.matIconName">{{menuTab.matIconName}}
-        </mat-icon>
-        {{menuTab.name}}
-      </a>
-      <mat-menu #menu="matMenu">
-        <span *ngFor="let sub of menuTab.children"><a [routerLink]="sub.link" mat-button>
-            {{sub.name}}
-          </a></span>
-      </mat-menu>
       <span *ngIf="sideNav"><br></span>
     </span>
   </ng-container>

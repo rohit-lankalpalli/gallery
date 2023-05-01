@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import {environment} from 'src/environments/environment';
 import {HttpClient} from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {Location} from '@angular/common'; 
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,7 @@ export class CommonUtilService {
   public API_ENDPOINT:String = environment.API_ENDPOINT;
 
   public static isValidUser:boolean = false;
+  public static imageDetailsArray:any;
 
   constructor(private http: HttpClient, public router: Router, public route: ActivatedRoute, public location: Location, 
     public formBuilder: FormBuilder, public toastrService: ToastrService, public spinner: NgxSpinnerService) { 

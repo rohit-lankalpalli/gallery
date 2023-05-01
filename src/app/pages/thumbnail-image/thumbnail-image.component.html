@@ -1,0 +1,6 @@
+<mat-card class="card">
+    <img mat-card-image class="hoverPointer" (load)="util.spinner.hide()" (click)="viewPost()" [src]="util.API_ENDPOINT+imageDetails.thumnailLink" [alt]="imageDetails.alt">
+   <!-- <mat-card-actions align="end">
+        <a mat-button class="hoverPointer" (click)="viewPost()">❤️ View</a>
+    </mat-card-actions> -->
+</mat-card>

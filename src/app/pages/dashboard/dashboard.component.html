@@ -1,0 +1,30 @@
+<div class="mainDash">
+<div class="filterPlace" align="end">
+    <mat-form-field appearance="fill">
+        <mat-label>Filter By Place</mat-label>
+        <mat-select [formControl]="places" multiple (selectionChange)="filterArray($event)">
+          <mat-select-trigger>
+            {{places.value?.[0] || ''}}
+            <span *ngIf="(places.value?.length || 0) > 1" class="additional-selection">
+              (+{{(places.value?.length || 0) - 1}} {{places.value?.length === 2 ? 'other' : 'others'}})
+            </span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let place of placesList" [value]="place">{{place}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div class="container" 
+      infiniteScroll
+      [infiniteScrollDistance]="0.5"
+      [infiniteScrollThrottle]="500"
+      (scrolled)="onScroll()"
+      infiniteScrollContainer=".mainDash"
+      [fromRoot]="true"
+      [scrollWindow]="true"
+>
+    <div *ngFor="let imageDetails of scrollArray">
+        <app-thumbnail-image [imageDetails]="imageDetails"></app-thumbnail-image>
+    </div>
+</div>
+</div>
+
